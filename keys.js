@@ -5,4 +5,11 @@ exports.spotify = {
   secret: process.env.SPOTIFY_SECRET
 };
 
-var keys = require("./keys.js");
+exports.omdb = {
+    key: process.env.omdb_key
+};
+
+exports.BandsInTown = {
+    key: process.env.BandsInTown_app_id
+};
+
