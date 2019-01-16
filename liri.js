@@ -8,17 +8,23 @@ var spotify = new spotify(keys.spotify);
 var omdb = keys.omdb.key;
 var bit = keys.BandsInTown.key;
 var action = process.argv[2];
-var search = process.argv[3];
+var search = process.argv.slice(3).join(" ");
 
 function concertThis() {
-    axios.get("https://rest.bandsintown.com/artists/" + search + "/events?app_id=" + bit).then(
-        function (response) {
-            for (var i = 0; i < response.data.length; i++) {
-                console.log(response.data[i].venue.name + " - " + response.data[i].venue.country + " - " + moment(response.data[i].datetime).format("MM/DD/YYYY"));
-            }
-        }
 
-    );
+    axios.get("https://rest.bandsintown.com/artists/" + search + "/events?app_id=" + bit)
+        .then(
+            function (response) {
+                for (var i = 0; i < response.data.length; i++) {
+                    console.log("Venue: " + response.data[i].venue.name);
+                    console.log("Location: " + response.data[i].venue.city + ", " + response.data[i].venue.country);
+                    console.log("Date: " + moment(response.data[i].datetime).format("MM/DD/YYYY"));
+                    console.log("___________________________________")
+                }
+            })
+        .catch(function (error) {
+            console.log(error);
+        });
 };
 
 function spotifyThisSong() {
@@ -61,6 +67,15 @@ function movieThis() {
         });
 }
 
+function doWhatItSays() {
+    fs.readFile("random.txt", "utf-8", function (error, data) {
+        if (error) {
+            return console.log(error);
+        }
+        console.log(data);
+    })
+}
+
 switch (action) {
     case "concert-this":
         concertThis();
@@ -71,4 +86,11 @@ switch (action) {
     case "movie-this":
         movieThis();
         break;
-}
+    case "do-what-it-says":
+        doWhatItSays();
+        break;
+    default: 
+    {
+        console.log("error: invalid request")
+    }    
+};
