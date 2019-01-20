@@ -13,7 +13,7 @@ Use any of these three requests to either look up a song in spotify, find info o
 - OMDB API (http://www.omdbapi.com)
 - Bands In Town API (http://www.artists.bandsintown.com/bandsintown-api)
 
-# Screenshot and video examples
+# Screenshots:
 ![Screenshot](https://github.com/jdfili/liri-node-app/blob/master/images/Screenshot%20(14).png?raw=true)
 ![Screenshot](https://github.com/jdfili/liri-node-app/blob/master/images/Screenshot%20(15).png)
 ![Screnshot](https://github.com/jdfili/liri-node-app/blob/master/images/Screenshot%20(16).png)
@@ -22,9 +22,5 @@ Use any of these three requests to either look up a song in spotify, find info o
 ![Screnshot](https://github.com/jdfili/liri-node-app/blob/master/images/Screenshot%20(19).png)
 ![Screnshot](https://github.com/jdfili/liri-node-app/blob/master/images/Screenshot%20(20).png)
 
-
-
- 
- 
- 
-https://drive.google.com/file/d/1pmQVJTdtFTIvpuwkK2Ql0s0yznkIBi1p/view
+# Video:
+ - https://drive.google.com/file/d/1pmQVJTdtFTIvpuwkK2Ql0s0yznkIBi1p/view
