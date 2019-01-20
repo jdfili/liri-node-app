@@ -15,6 +15,13 @@ Use any of these three requests to either look up a song in spotify, find info o
 
 # Screenshot and video examples
 ![Screenshot](https://github.com/jdfili/liri-node-app/blob/master/images/Screenshot%20(14).png?raw=true)
+![Screenshot](https://github.com/jdfili/liri-node-app/blob/master/images/Screenshot%20(15).png)
+![Screnshot](https://github.com/jdfili/liri-node-app/blob/master/images/Screenshot%20(16).png)
+![Screnshot](https://github.com/jdfili/liri-node-app/blob/master/images/Screenshot%20(17).png)
+![Screnshot](https://github.com/jdfili/liri-node-app/blob/master/images/Screenshot%20(18).png)
+![Screnshot](https://github.com/jdfili/liri-node-app/blob/master/images/Screenshot%20(19).png)
+![Screnshot](https://github.com/jdfili/liri-node-app/blob/master/images/Screenshot%20(20).png)
+
 
 
  
