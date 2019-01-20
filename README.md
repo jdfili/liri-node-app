@@ -1,9 +1,9 @@
 # liri-node-app
 
-This is a CLI app. It is designed to take in three requests: 
+This is a CLI app. It is designed to take in three requests in the command line: 
 - "spotify-this-song" + [song-name]
-- "movie-this" + [movie name]
-- "concert-this" + [artist name]
+- "movie-this" + [movie-name]
+- "concert-this" + [artist-name]
 
 Use any of these three requests to either look up a song in spotify, find info on a movie, or look up upcoming concerts for an artist.
 
