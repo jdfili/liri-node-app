@@ -1,3 +1,4 @@
+//Requiring npm packages and keys needed for API requests
 require("dotenv").config();
 var axios = require('axios');
 var keys = require('./keys.js');
@@ -8,13 +9,17 @@ var spotify = new Spotify(keys.spotify);
 var omdb = keys.omdb.key;
 var bit = keys.BandsInTown.key;
 
+//Function stores user-input into variables and then passes them through and runs the toDo function
 function initialize() {
     var action = process.argv[2];
     var search = process.argv.slice(3).join(" ");
     toDo(action, search);
 }
 
+// Bands in town API call. The search term is passed through the function, and using axios the data is for-looped over 
+//to display the appropriate data to the user. The data is also logged into log.txt
 function concertThis(search) {
+    //Default search if no search term is provided by user
     if (search === "") {
         search = "Dance Gavin Dance"
         console.log("You didn't specify a band, so check out these dudes >>>>>>>>>>>>")
@@ -28,6 +33,8 @@ function concertThis(search) {
                         response.data[i].venue.country + "\nDate: " + moment(response.data[i].datetime).format("MM/DD/YYYY") +
                         "\n----------------------------\n";
                     console.log(info);
+               
+                    //use fs.appendFile to log the response into log.txt
                     fs.appendFile("log.txt", info, function (err) {
                         if (err) throw err;
 
@@ -39,7 +46,10 @@ function concertThis(search) {
         });
 };
 
+//Spotify API call. Search term is passed through the function and the response is both shown to the user
+//and logged into log.txt
 function spotifyThisSong(search) {
+    //Default search if no search term is provided by user
     if (search === "") {
         search = "The Sign"
         console.log("You didn't provide a song, so here's this >>>>>>>")
@@ -63,7 +73,9 @@ function spotifyThisSong(search) {
     });
 }
 
+//OMDB API call. Search term is passed through and the response is displayed to user and logged into log.txt
 function movieThis(search) {
+    //Default search if no search term is provided by user
     if (search === "") {
         search = "Mr. Nobody."
         console.log("You didn't provide a title so here's this >>>>>>>>>>")
@@ -84,7 +96,8 @@ function movieThis(search) {
             console.log(error);
         });
 }
-
+//Function that reads the random.txt file using fs.readFile. The data from the file is split, and then stored into
+//variables which are then passed through the toDo funtion.
 function doWhatItSays() {
     fs.readFile("random.txt", "utf-8", function (error, data) {
         if (error) {
@@ -98,6 +111,8 @@ function doWhatItSays() {
     })
 }
 
+//Function that takes in user-input arguments taken from the initialize funciton.
+//Depending on the request and search-term received from the user-input, the corresponding function will run.
 function toDo(action, search) {
     switch (action) {
         case "concert-this":
