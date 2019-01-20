@@ -1,10 +1,10 @@
 require("dotenv").config();
 var axios = require('axios');
 var keys = require('./keys.js');
-var spotify = require('node-spotify-api');
+var Spotify = require('node-spotify-api');
 var moment = require('moment');
 var fs = require('fs');
-var spotify = new spotify(keys.spotify);
+var spotify = new Spotify(keys.spotify);
 var omdb = keys.omdb.key;
 var bit = keys.BandsInTown.key;
 
@@ -15,14 +15,23 @@ function initialize() {
 }
 
 function concertThis(search) {
+    if (search === "") {
+        search = "Dance Gavin Dance"
+        console.log("You didn't specify a band, so check out these dudes >>>>>>>>>>>>")
+    }
 
     axios.get("https://rest.bandsintown.com/artists/" + search + "/events?app_id=" + bit)
         .then(
             function (response) {
                 for (var i = 0; i < response.data.length; i++) {
-                    console.log("Venue: " + response.data[i].venue.name + "\nLocation: " + response.data[i].venue.city + ", " +
+                    var info = "Artist: " + search + "\nVenue: " + response.data[i].venue.name + "\nLocation: " + response.data[i].venue.city + ", " +
                         response.data[i].venue.country + "\nDate: " + moment(response.data[i].datetime).format("MM/DD/YYYY") +
-                        "\n----------------------------");
+                        "\n----------------------------\n";
+                    console.log(info);
+                    fs.appendFile("log.txt", info, function (err) {
+                        if (err) throw err;
+
+                    });
                 }
             })
         .catch(function (error) {
@@ -31,7 +40,10 @@ function concertThis(search) {
 };
 
 function spotifyThisSong(search) {
-
+    if (search === "") {
+        search = "The Sign"
+        console.log("You didn't provide a song, so here's this >>>>>>>")
+    };
     spotify.search({
         type: 'track',
         query: search
@@ -39,22 +51,34 @@ function spotifyThisSong(search) {
         if (err) {
             return console.log('Error occurred: ' + err);
         }
+        var response = data.tracks.items;
+        var info = "Artist: " + response[0].artists[0].name + "\n" + "Song: " + response[0].name + "\n"
+            + "Preview: " + response[0].external_urls.spotify +
+            "\n" + "Album: " + response[0].album.name + "\n---------------------\n";
+        console.log(info);
+        fs.appendFile("log.txt", info, function (err) {
+            if (err) throw err;
 
-        for (var i = 0; i < data.tracks.items.length; i++) {
-            var response = data.tracks.items;
-            console.log(response[i].artists[0].name + "\n" + response[i].name + "\n" + response[i].href +
-                "\n" + response[i].album.name + "\n---------------------");
-        }
+        });
     });
 }
 
 function movieThis(search) {
+    if (search === "") {
+        search = "Mr. Nobody."
+        console.log("You didn't provide a title so here's this >>>>>>>>>>")
+    }
     axios.get('http://www.omdbapi.com/?apikey=' + omdb + '&t=' + search)
         .then(function (response) {
             var info = response.data;
-            console.log("Title: " + info.Title + "\nYear: " + info.Year + "\nIMDB Rating: " + info.imdbRating +
+            var logInfo = "Title: " + info.Title + "\nYear: " + info.Year + "\nIMDB Rating: " + info.imdbRating +
                 "\nRottenTomatoes Rating: " + info.Ratings[1].Value + "\nCountry: " + info.Country + "\nPlot: " + info.Plot +
-                "\nActors: " + info.Actors);
+                "\nActors: " + info.Actors + "\n---------------------------\n"
+            console.log(logInfo);
+            fs.appendFile("log.txt", logInfo, function (err) {
+                if (err) throw err;
+
+            });
         })
         .catch(function (error) {
             console.log(error);
