@@ -15,7 +15,7 @@ Use any of these three requests to either look up a song in spotify, find info o
 
 # Screenshot and video examples
 Screenshots:
-![Screenshot](Screenshot(14).png)
+- ![Screenshot](Screenshot (14).png)
  
  
  
