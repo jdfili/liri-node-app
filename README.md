@@ -15,7 +15,7 @@ Use any of these three requests to either look up a song in spotify, find info o
 
 # Screenshot and video examples
 * Screenshots: 
- - https://imgur.com/3PKkQN7
+ - ![Screenshot](Screenshot(14).png)
  - 
  - 
  - 
