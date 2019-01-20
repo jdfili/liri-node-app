@@ -14,7 +14,8 @@ Use any of these three requests to either look up a song in spotify, find info o
 - Bands In Town API (http://www.artists.bandsintown.com/bandsintown-api)
 
 # Screenshot and video examples
-![Screenshot](https://github.com/jdfili/liri-node-app/blob/master/images/Screenshot%20(14).png?raw=true | width=100)
+![Screenshot](https://github.com/jdfili/liri-node-app/blob/master/images/Screenshot%20(14).png?raw=true)
+img src="https://github.com/jdfili/liri-node-app/blob/master/images/Screenshot%20(14).png?raw=true" alt="alt text" width="200" height="200">
 
  
  
