@@ -15,7 +15,7 @@ Use any of these three requests to either look up a song in spotify, find info o
 
 # Screenshot and video examples
 Screenshots:
-- ![screenshot](Screenshot (14))
+- ![screenshot](https://octodex.github.com/images/yaktocat.png)
  
  
  
